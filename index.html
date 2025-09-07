@@ -1,53 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Landing Page</title>
-    <link rel="stylesheet" href="styles.css">
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Charity Water Landing Page</title>
+   <link rel="stylesheet" href="styles.css">
+   <style>
+     /* Confetti droplet styles */
+     .confetti-droplet {
+       position: absolute;
+       width: 32px;
+       height: auto;
+       pointer-events: none;
+       z-index: 9999;
+     }
+   </style>
 </head>
 <body>
-        <!-- Website Logo and Title -->
-        <div class="logo-bar">
-            <!-- Logo image -->
-            <img src="img/cw_logo-2.png" alt="Charity Water Logo" class="logo-img">
-            <!-- Website title -->
-            <span class="logo-title">Charity Water</span>
-        </div>
-        <!-- Hero Section: This is the main banner at the top of the page -->
-    <section class="hero">
-        <!-- Main headline -->
-        <h1>Clean Water for Everyone</h1>
-        <!-- Subheadline -->
-        <p>Join us in bringing safe, clean water to communities in need.</p>
-    </section>
+   <!-- Confetti droplets will be added here by JavaScript -->
+   <script>
+     // Show confetti droplets only when the donate button is pressed
+     function showConfetti() {
+       var dropletCount = 20; // Number of droplets
+       var body = document.body;
+       var ww = window.innerWidth;
+       var wh = window.innerHeight;
+       var droplets = [];
+       for (var i = 0; i < dropletCount; i++) {
+         var img = document.createElement('img');
+         img.src = 'img/droplet.svg';
+         img.className = 'confetti-droplet';
+         img.style.left = Math.random() * (ww - 32) + 'px';
+         img.style.top = Math.random() * (wh - 32) + 'px';
+         img.style.transform = 'rotate(' + (Math.random() * 360) + 'deg)';
+         body.appendChild(img);
+         droplets.push(img);
+       }
+       // Remove confetti after 1.5 seconds
+       setTimeout(function() {
+         droplets.forEach(function(img) {
+           img.remove();
+         });
+       }, 1500);
+     }
+     // Attach confetti to donate button
+     document.addEventListener('DOMContentLoaded', function() {
+       var donateBtn = document.querySelector('.donate-button');
+       if (donateBtn) {
+         donateBtn.addEventListener('click', function(e) {
+           showConfetti();
+         });
+       }
+     });
+   </script>
 
-    <!-- Story Section: This tells the story of the nonprofit -->
-    <section class="story">
-        <!-- Our Story replaced with image only -->
-        <img src="img/cw.jpeg" alt="Charity Water Story" class="story-image">
-    </section>
 
-    <!-- Real-World Impact Story Section -->
-    <section class="impact-story">
-        <!-- Section headline -->
-        <h2>Real Impact: Meet Amina</h2>
-        <!-- Container for image and text -->
-        <div class="impact-content">
-            <!-- Impact image -->
-            <img src="img/beautiful girl.png" alt="Amina smiling with clean water" class="impact-image">
-            <!-- Impact story text -->
-            <p>
-                Amina used to walk miles every day to collect water for her family. Thanks to your support, her village now has a clean water well. Amina can go to school and her family is healthier and happier.
-            </p>
-        </div>
-    </section>
+   <!-- Top box with only the logo in the top left corner -->
+   <div class="impact-logo-box" style="position: relative;">
+       <img src="img/cw_logo-2.png" alt="Charity Water Logo" class="impact-logo-img-large">
+       <!-- Menu buttons, centered and spaced, black text, no box, bold font -->
+       <nav style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); display: flex; gap: 32px;">
+         <button style="background: none; color: #1A1A1A; border: none; padding: 0 12px; font-size: 1em; cursor: pointer; font-family: inherit; font-weight: bold;">Take Action</button>
+         <button style="background: none; color: #1A1A1A; border: none; padding: 0 12px; font-size: 1em; cursor: pointer; font-family: inherit; font-weight: bold;">About Us</button>
+         <button style="background: none; color: #1A1A1A; border: none; padding: 0 12px; font-size: 1em; cursor: pointer; font-family: inherit; font-weight: bold;">Why Water?</button>
+       </nav>
+       <!-- Sign In button on right side -->
+       <button style="position: absolute; top: 50%; right: 32px; transform: translateY(-50%); background: none; color: #BF6C46; border: none; font-weight: bold; font-size: 1em; cursor: pointer; font-family: inherit;">Sign In</button>
+   </div>
 
-    <!-- Call-to-Action Section: This encourages visitors to take action -->
-    <section class="call-to-action">
-        <h2>Make a Difference</h2>
-        <p>Your support can help save lives. Every donation brings us closer to a world with clean water for all.</p>
-        <a href="#" class="donate-button">Donate Now</a>
-    </section>
+
+   <!-- Story Section: This tells the story of the nonprofit -->
+   <section class="story" style="position: relative;">
+   <!-- Heading and subheading in top left, with colored semi-transparent background for readability -->
+   <div style="position: absolute; top: 32px; left: 32px; max-width: 420px; background: rgba(119, 168, 187, 0.85); padding: 24px 20px; border-radius: 12px; text-align: left; display: flex; flex-direction: row; align-items: flex-start; gap: 18px;">
+     <div style="flex: 1 1 0; min-width: 0;">
+       <h2 style="font-size: 2em; margin-bottom: 0.5em; color: #fff;">Make waves of change with 100% Transparent Donations</h2>
+       <h3 style="font-size: 1.1em; font-weight: normal; color: #fff; line-height: 1.4; margin: 0;">Every dollar flows directly into <br>clean water solutions <br>you can follow step by step, making your impact<br> real, visible, and measurable.</h3>
+     </div>
+     <img src="img/100 percent.png" alt="100% Funds Water Projects" style="max-width: 80px; width: 100%; height: auto; display: block; object-fit: contain; margin-top: 12px;">
+   </div>
+   <!-- Our Story replaced with image only -->
+   <img src="img/cw.jpg" alt="Charity Water Story" class="story-image">
+   <!-- Donate button on right side, centered vertically, moved further left -->
+   <div style="position: absolute; top: 50%; right: 160px; transform: translateY(-50%); text-align: center;">
+     <a href="#" class="donate-button">Donate Now</a>
+   </div>
+   </section>
+
+
+   <!-- Real-World Impact Story Section -->
+   <section class="impact-story">
+       <!-- Section headline -->
+       <h2>Real Impact: Meet Rani</h2>
+       <!-- Container for image and text -->
+       <div class="impact-content">
+           <!-- Impact image -->
+           <img src="img/beautiful girl.png" alt="Amina smiling with clean water" class="impact-image">
+           <!-- Impact story text -->
+           <p>
+               Every morning, she used to set out on a long walk under the hot sun, carrying heavy containers to collect water for her family. The journey took hours, leaving little time for school and little energy for play. The water she carried home was often unsafe, but it was all they had.<br><br>
+               Today, her story is different. Thanks to your generosity, her village has a clean water well right in the heart of the community. Instead of walking miles, she now walks just a few steps. Instead of worrying about sickness, her family is healthier and stronger. And instead of missing out on an education, she sits in a classroom, learning, laughing, and dreaming about her future.<br><br>
+               Clean water has given her family more than health — it has given them hope. It has restored time, opportunity, and joy. And it’s all because of supporters like you who believed that every child deserves the chance to grow up with safe water and big dreams.
+           </p>
+       </div>
+   </section>
+
+
+   <!-- Call-to-Action Section: This encourages visitors to take action -->
+   <section class="call-to-action">
+               <h2 style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                   Be the droplet in someones life
+                   <img src="img/droplet.svg" alt="Water Droplet" style="height: 1em; width: auto; vertical-align: middle;">
+               </h2>
+       <p>Clean water changes everything. With your support, families can live healthier, children can learn, and entire communities can thrive.</p>
+       <a href="#" class="donate-button">Donate Now</a>
+   </section>
 </body>
 </html>
